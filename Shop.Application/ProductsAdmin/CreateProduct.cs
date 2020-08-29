@@ -3,7 +3,7 @@ using Shop.Database;
 using Shop.Domain.Models;
 using System.Threading.Tasks;
 
-namespace Shop.Application.Products
+namespace Shop.Application.ProductsAdmin
 {
    public class CreateProduct
    {
@@ -18,7 +18,7 @@ namespace Shop.Application.Products
          _context.Products.Add(new Product
          {
             Name = vm.Name,
-            Description = vm.Description, 
+            Description = vm.Description,
             Price = vm.Price
          });
 
