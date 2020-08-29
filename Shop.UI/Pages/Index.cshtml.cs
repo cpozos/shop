@@ -4,6 +4,7 @@ using Microsoft.Extensions.Logging;
 using Shop.Application.Products;
 using Shop.Application.ViewModels;
 using Shop.Database;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Shop.UI.Pages
@@ -16,13 +17,18 @@ namespace Shop.UI.Pages
       [BindProperty]
       public ProductViewModel Product { get; set; }
 
+      public IEnumerable<ProductViewModel> Products { get; set; }
+
       public IndexModel(ApplicationDbContext dbContext, ILogger<IndexModel> logger)
       {
          _context = dbContext;
          _logger = logger;
       }
 
-      public void OnGet() { }
+      public void OnGet() 
+      {
+         Products = new GetProducts(_context).Do();
+      }
 
       public async Task<IActionResult> OnPost()
       {
