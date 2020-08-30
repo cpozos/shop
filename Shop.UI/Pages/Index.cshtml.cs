@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using Shop.Application.Products;
+using Shop.Application.ProductsAdmin;
 using Shop.Application.ViewModels;
 using Shop.Database;
 using System.Collections.Generic;
