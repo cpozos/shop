@@ -12,9 +12,10 @@ namespace Shop.Application.ProductsAdmin
       {
          _context = dbContext;
       }
-      public async Task Do(ProductViewModel vm)
+      public async Task<ProductViewModel> Do(ProductViewModel vm)
       {
          await _context.SaveChangesAsync();
+         return new ProductViewModel();
       }
    }
 }

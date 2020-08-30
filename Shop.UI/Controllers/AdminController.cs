@@ -3,6 +3,7 @@ using Shop.Application.Products;
 using Shop.Application.ProductsAdmin;
 using Shop.Application.ViewModels;
 using Shop.Database;
+using System.Threading.Tasks;
 
 namespace Shop.UI.Controllers
 {
@@ -21,14 +22,18 @@ namespace Shop.UI.Controllers
 
       [HttpGet("products/{id}")]
       public IActionResult GetProduct(int id) => Ok(new GetProduct(_context).Do(id));
-      
+
       [HttpPost("products")]
-      public IActionResult CreateProduct(ProductViewModel vm) => Ok(new CreateProduct(_context).Do(vm));
+      public async Task<IActionResult> CreateProduct([FromBody] ProductViewModel vm)
+      {
+         var result = await new CreateProduct(_context).Do(vm);
+         return Ok(result);
+      }
       
       [HttpDelete("products/{id}")]
-      public IActionResult DeleteProduct(int id) => Ok(new GetProducts(_context).Do());
+      public async Task<IActionResult> DeleteProduct(int id) => Ok(await new DeleteProduct(_context).Do(id));
 
       [HttpPut("products")]
-      public IActionResult UpdateProduct(ProductViewModel vm) => Ok(new UpdateProduct(_context).Do(vm));
+      public async Task<IActionResult> UpdateProduct([FromBody] ProductViewModel vm) => Ok(await new UpdateProduct(_context).Do(vm));
    }
 }
