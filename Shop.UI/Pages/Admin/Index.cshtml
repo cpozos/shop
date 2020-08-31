@@ -3,29 +3,79 @@
 @{
 }
 
-<div id="app">
+<div id="app" class="container">
+
+    <div class="columns">
+        <div class="column is-3">
+            <div class="menu">
+                <p class="menu-label">Admin menu</p>
+                <ul class="menu-list">
+                    <li><a>Products</a></li>
+                    <li><a>Orders</a></li>
+                    <li><a>Stock</a></li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="column is-9">
+
+            <div v-if="!editing">
+                <button class="button" @@click="newProduct">Add New product</button>
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="(product, index) in products">
+                            <td>{{product.id}}</td>
+                            <td>{{product.name}}</td>
+                            <td>{{product.price}}</td>
+                            <td><a @@click="editProduct(product.id, index)">Edit</a></td>
+                            <td><a @@click="deleteProduct(product.id, index)">Delete</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div v-else>
+                <div class="field">
+                    <label class="label">Product Name</label>
+                    <div class="control">
+                        <input class="input" v-model="productModel.name" />
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="label">Product Description</label>
+                    <div class="control">
+                        <input class="input" v-model="productModel.description" />
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="label">Price</label>
+                    <div class="control">
+                        <input class="input" type="number" v-model.number="productModel.price" />
+                    </div>
+                </div>
+
+                <button class="button is-success" @@click="createProduct" v-if="!productModel.id">Create proudct</button>
+                <button class="button is-warning" @@click="updateProduct" v-else>Update proudct</button>
+                <button class="button" @@click="cancel">Cancel</button>
+
+            </div>
+        </div>
+    </div>
 
     <button v-on:click="togglePrice">Show price</button>
-    
-    <div>
-        <p v-for="(product, index) in products">
-            {{product.id}} - {{product.name}}
-            <span v-if="showPrice">{{product.price}}</span>
-            <span v-show="!showPrice">${{product.price}}</span>
-            <a @@click="editProduct(product.id, index)">Edit</a>
-            <a @@click="deleteProduct(product.id, index)">Delete</a>
-        </p>
-    </div>
-
-    <div>
-        <input v-model="productModel.name" />
-        <input v-model="productModel.description" />
-        <input type="number" v-model.number="productModel.price"/>
-
-        <button @@click="createProduct" v-if="!productModel.id">Create proudct</button>
-        <button @@click="updateProduct" v-else>Update proudct</button>
-
-    </div>
 
 </div>
 

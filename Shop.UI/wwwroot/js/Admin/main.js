@@ -1,6 +1,7 @@
 ﻿var app = new Vue({
     el: '#app',
     data: {
+        editing: false,
         loading: false,
         showPrice: true,
         objectIndex: 0,
@@ -74,6 +75,7 @@
                 })
                 .then(() => {
                     this.loading = false;
+                    this.editing = false;
                 });
         },
 
@@ -88,11 +90,13 @@
                     console.log(err);
                 })
                 .then(() => {
+                    this.editing = false;
                     this.loading = false;
                 });
         },
 
         editProduct(id, index) {
+            this.editing = true;
             this.objectIndex = index;
             this.getProduct(id);
         },
@@ -111,6 +115,15 @@
                     this.loading = false;
                 });
         },
+
+        newProduct() {
+            this.editing = true;
+            this.productModel.id = 0;
+        },
+
+        cancel() {
+            this.editing = false;
+        }
     },
 
     computed: {
