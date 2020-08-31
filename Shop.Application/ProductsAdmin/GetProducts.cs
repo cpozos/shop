@@ -3,7 +3,7 @@ using Shop.Database;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Shop.Application.Products
+namespace Shop.Application.ProductsAdmin
 {
    public class GetProducts
    {
@@ -18,6 +18,7 @@ namespace Shop.Application.Products
       {
          return _context.Products.ToList().Select(p => new ProductViewModel
          {
+            Id = p.Id,
             Name = p.Name,
             Price = p.Price
          });

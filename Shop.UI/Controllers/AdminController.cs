@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Shop.Application.Products;
 using Shop.Application.ProductsAdmin;
 using Shop.Application.ViewModels;
 using Shop.Database;
