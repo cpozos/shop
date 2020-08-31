@@ -19,68 +19,14 @@
         </div>
 
         <div class="column is-9">
-
-            <div v-if="!editing">
-                <button class="button" @@click="newProduct">Add New product</button>
-
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>Id</th>
-                            <th>Name</th>
-                            <th>Description</th>
-                            <th></th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr v-for="(product, index) in products">
-                            <td>{{product.id}}</td>
-                            <td>{{product.name}}</td>
-                            <td>{{product.price}}</td>
-                            <td><a @@click="editProduct(product.id, index)">Edit</a></td>
-                            <td><a @@click="deleteProduct(product.id, index)">Delete</a></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <div v-else>
-                <div class="field">
-                    <label class="label">Product Name</label>
-                    <div class="control">
-                        <input class="input" v-model="productModel.name" />
-                    </div>
-                </div>
-
-                <div class="field">
-                    <label class="label">Product Description</label>
-                    <div class="control">
-                        <input class="input" v-model="productModel.description" />
-                    </div>
-                </div>
-
-                <div class="field">
-                    <label class="label">Price</label>
-                    <div class="control">
-                        <input class="input" type="number" v-model.number="productModel.price" />
-                    </div>
-                </div>
-
-                <button class="button is-success" @@click="createProduct" v-if="!productModel.id">Create proudct</button>
-                <button class="button is-warning" @@click="updateProduct" v-else>Update proudct</button>
-                <button class="button" @@click="cancel">Cancel</button>
-
-            </div>
+            <product-manager></product-manager>
         </div>
     </div>
-
-    <button v-on:click="togglePrice">Show price</button>
-
 </div>
 
 @section scripts{ 
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="~/js/Admin/main.js"></script>
+    <script src="~/js/admin/product-component.js"></script>
+    <script src="~/js/admin/main.js"></script>
 }
