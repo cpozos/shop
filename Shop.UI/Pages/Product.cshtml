@@ -14,7 +14,7 @@
             <select asp-for="ProductTest.Id">
                 @foreach (var item in Model.Product.Stock)
                 {
-                    <option value="@item.Id">item.Description</option>
+                    <option value="@item.Id">@item.Description</option>
                 }
             </select>
             <button type="submit">Submit</button>
