@@ -13,17 +13,17 @@ namespace Shop.Application.StockAdmin
          _context = context;
       }
 
-      public async Task<StockViewModel> Do(StockViewModel request)
+      public async Task<bool> Do(int stockId)
       {
-         var stock = _context.Stocks.Find(request?.Id);
+         var stock = _context.Stocks.Find(stockId);
 
          if (stock is null)
-            return null;
-
-         _context.Stocks.Add(stock);
+            return false;
+         
+         _context.Stocks.Remove(stock);
          await _context.SaveChangesAsync();
 
-         return request;
+         return true;
       }
    }
 }

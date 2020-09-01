@@ -15,14 +15,14 @@ namespace Shop.Application.StockAdmin
          _context = context;
       }
 
-      public async Task<IEnumerable<StockViewModel>> Do(ICollection<StockViewModel> request)
+      public async Task<Response> Do(Request request)
       {
-         if (!(request?.Count > 0))
+         if (!(request?.Stocks?.Count > 0))
             return null;
 
          // Mapping
          var stocks = new List<Stock>();
-         foreach (var stock in request)
+         foreach (var stock in request.Stocks)
          {
             stocks.Add(new Stock
             {
@@ -36,7 +36,21 @@ namespace Shop.Application.StockAdmin
          _context.Stocks.UpdateRange(stocks);
          await _context.SaveChangesAsync();
 
-         return request;
+         return new Response
+         {
+            Stocks = request.Stocks
+         };
+      }
+
+
+      public class Request
+      {
+         public ICollection<StockViewModel> Stocks { get; set; }
+      }
+
+      public class Response
+      {
+         public IEnumerable<StockViewModel> Stocks { get; set; }
       }
    }
 }
