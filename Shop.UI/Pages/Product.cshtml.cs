@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Shop.Application.Products;
@@ -12,6 +13,9 @@ namespace Shop.UI.Pages
 
       public ProductViewModel Product { get; set; }
 
+      [BindProperty]
+      public Test ProductTest { get; set; }
+
       public ProductModel(ApplicationDbContext context)
       {
          _context = context;  
@@ -25,6 +29,21 @@ namespace Shop.UI.Pages
             return RedirectToPage("Index");
          else
             return Page();
+      }
+
+      public IActionResult OnPost()
+      {
+         var currentId = HttpContext.Session.GetString("id");
+
+         HttpContext.Session.SetString("id", ProductTest.Id);
+
+         return RedirectToPage("Index");
+      }
+
+
+      public class Test
+      {
+         public string Id { get; set; }
       }
    }
 }
