@@ -17,12 +17,12 @@ namespace Shop.Application.StockAdmin
 
       public async Task<Response> Do(Request request)
       {
-         if (!(request?.Stocks?.Count > 0))
+         if (!(request?.Stock?.Count > 0))
             return null;
 
          // Mapping
          var stocks = new List<Stock>();
-         foreach (var stock in request.Stocks)
+         foreach (var stock in request.Stock)
          {
             stocks.Add(new Stock
             {
@@ -38,19 +38,19 @@ namespace Shop.Application.StockAdmin
 
          return new Response
          {
-            Stocks = request.Stocks
+            Stock = request.Stock
          };
       }
 
 
       public class Request
       {
-         public ICollection<StockViewModel> Stocks { get; set; }
+         public ICollection<StockViewModel> Stock { get; set; }
       }
 
       public class Response
       {
-         public IEnumerable<StockViewModel> Stocks { get; set; }
+         public IEnumerable<StockViewModel> Stock { get; set; }
       }
    }
 }

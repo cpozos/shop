@@ -6,11 +6,11 @@ using System.Linq;
 
 namespace Shop.Application.StockAdmin
 {
-   public class GetStocks
+   public class GetStock
    {
       private ApplicationDbContext _context;
 
-      public GetStocks(ApplicationDbContext context)
+      public GetStock(ApplicationDbContext context)
       {
          _context = context;
       }
@@ -23,7 +23,7 @@ namespace Shop.Application.StockAdmin
             {
                Id = p.Id,
                Description = p.Description,
-               Stocks = p.Stock.Select(s=> new StockViewModel
+               Stock = p.Stock.Select(s=> new StockViewModel
                {
                   Id = s.Id,
                   Description = s.Description,
