@@ -1,4 +1,6 @@
-﻿namespace Shop.Application.ViewModels
+﻿using System.Collections.Generic;
+
+namespace Shop.Application.ViewModels
 {
    public class ProductViewModel
    {
@@ -6,5 +8,6 @@
       public string Name { get; set; }
       public string Description { get; set; }
       public decimal Price { get; set; }
+      public IEnumerable<StockViewModel> Stocks { get; set; }
    }
 }
