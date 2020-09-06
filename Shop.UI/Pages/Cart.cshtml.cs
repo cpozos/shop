@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Shop.Application.Cart;
 using Shop.Database;
+using System.Collections.Generic;
 
 namespace Shop.UI.Pages
 {
@@ -13,7 +14,7 @@ namespace Shop.UI.Pages
       {
          _context = context;
       }
-      public GetCart.Response Cart { get; set; }
+      public IEnumerable<GetCart.Response> Cart { get; set; }
 
       public IActionResult OnGet()
       {
