@@ -3,6 +3,10 @@
 @{
 }
 
+@using Microsoft.AspNetCore.Http.Extensions;
+
+<label>@UriHelper.GetDisplayUrl(Request)</label>
+
 <div id="app" class="container">
     <div v-if="!editing">
         <button class="button" @@click="newProduct">Add New product</button>
