@@ -24,22 +24,22 @@ namespace Shop.UI.Controllers
                "card",
             },
             LineItems = new List<SessionLineItemOptions>
-           {
-             new SessionLineItemOptions
-             {
-               PriceData = new SessionLineItemPriceDataOptions
+            {
+               new SessionLineItemOptions
                {
-                 UnitAmount = 2000,
-                 Currency = "usd",
-                 ProductData = new SessionLineItemPriceDataProductDataOptions
-                 {
-                   Name = "Producto 1",
-                 },
+                  PriceData = new SessionLineItemPriceDataOptions
+                  {
+                     UnitAmount = 2000,
+                     Currency = "usd",
+                     ProductData = new SessionLineItemPriceDataProductDataOptions
+                     {
+                        Name = "Producto 1",
+                     },
 
+                  },
+                  Quantity = 1,
                },
-               Quantity = 1,
-             },
-           },
+            },
             Mode = "payment",
             SuccessUrl = "https://localhost:44302/checkout/payment/success",
             CancelUrl = "https://localhost:44302/checkout/payment/success",
@@ -61,22 +61,22 @@ namespace Shop.UI.Controllers
                "card",
             },
             LineItems = new List<SessionLineItemOptions>
-           {
-             new SessionLineItemOptions
-             {
-               PriceData = new SessionLineItemPriceDataOptions
+            {
+               new SessionLineItemOptions
                {
-                 UnitAmount = 2000,
-                 Currency = "usd",
-                 ProductData = new SessionLineItemPriceDataProductDataOptions
-                 {
-                   Name = "Producto 1",
-                 },
+                  PriceData = new SessionLineItemPriceDataOptions
+                  {
+                     UnitAmount = 2000,
+                     Currency = "usd",
+                     ProductData = new SessionLineItemPriceDataProductDataOptions
+                     {
+                        Name = "Producto 1",
+                     },
 
+                  },
+                  Quantity = 1,
                },
-               Quantity = 1,
-             },
-           },
+            },
             Mode = "payment",
             SuccessUrl = "https://localhost:44302/checkout/payment/success",
             CancelUrl = "https://localhost:44302/checkout/payment/success",
